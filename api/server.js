@@ -6,10 +6,6 @@ const validate = require('jsonschema').validate;
 const app = express();
 
 app.use(express.json());
-app.use(Prometheus({
-  metricsPath: '/metrics',
-  collectDefaultMetrics: true,
-}));
 
 const timeSchema = {
   "properties": {
@@ -25,6 +21,26 @@ const timeSchema = {
 function validateAgainstSchema(data, schema) {
   return validate(data, schema);
 }
+
+// Middleware to check Authorization header
+const authMiddleware = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = 'mysecrettoken';
+
+  if (!authHeader || authHeader !== token) {
+    res.status(403).json({ message: 'Authorization token missing or invalid' });
+    return;
+  }
+
+  next();
+};
+
+// Apply the middleware to all routes
+app.use(authMiddleware);
+app.use(Prometheus({
+  metricsPath: '/metrics',
+  collectDefaultMetrics: true,
+}));
 
 app.get('/time', (req, res) => {
   const currentTime = Math.floor(Date.now() / 1000);
@@ -42,21 +58,7 @@ app.get('/time', (req, res) => {
   return res.json(response);
 });
 
-app.get('/metrics', (req, res) => {
-  res.set('Content-Type', Prometheus.register.contentType);
-  return res.send(Prometheus.register.metrics());
-});
 
-app.use((req, res, next) => {
-  const token = req.get('Authorization');
-
-  if (token !== 'mysecrettoken') {
-    return res.status(403).json({ error: 'Authorization token missing or invalid' });
-  }
-
-  return next();
-});
-
-app.listen(3000, () => {
-  console.log('API listening on port 3000');
+app.listen(8080, () => {
+  console.log('API listening on port 8080');
 });

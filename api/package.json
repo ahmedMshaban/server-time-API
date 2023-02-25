@@ -1,7 +1,13 @@
 {
   "dependencies": {
+    "concurrently": "^7.6.0",
     "express": "^4.18.2",
     "express-prometheus-middleware": "^1.2.0",
     "jsonschema": "^1.4.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "frontend": "cd ../timer && npm run start",
+    "dev": "concurrently \"npm run start\" \"npm run frontend\""
   }
 }
