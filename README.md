@@ -5,9 +5,10 @@
 
 ## How to install
 
-1- Clone the repository from here https://github.com/ahmedMshaban/server-time-API
-2- At the root folder run `npm run install`.
-3- After it fully finish run `npm run dev`.
+1- Clone the repository from GitHub. https://github.com/ahmedMshaban/server-time-API
+2- Open a terminal and navigate to the root folder of the project. 
+3- Run the command `npm install`.
+4- After the installation is complete, run the command `npm run dev` to start both the server and the frotend.
 
 ## Code Dependencies
 
@@ -18,3 +19,16 @@
 5- axios https://www.npmjs.com/package/axios
 6- moment https://www.npmjs.com/package/moment
 7- react https://www.npmjs.com/package/react
+
+
+
+
+
+To install the server-time-API, follow these steps:
+
+    Clone the repository from GitHub.
+    Open a terminal and navigate to the root folder of the project.
+    Run the command npm run install.
+    After the installation is complete, run the command npm run dev to start the server.
+
+
