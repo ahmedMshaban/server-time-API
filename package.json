@@ -6,7 +6,7 @@
       "start": "cd ./api && node server.js",
       "frontend": "cd ./timer && npm run start",
       "dev": "concurrently \"npm run start\" \"npm run frontend\"",
-      "install": "cd ./timer && npm install timer && cd ../api && npm install"
+      "install": "cd ./timer && npm install && cd ../api && npm install"
     }
   }
   
