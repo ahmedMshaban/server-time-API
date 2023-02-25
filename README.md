@@ -21,14 +21,3 @@
 7- react https://www.npmjs.com/package/react
 
 
-
-
-
-To install the server-time-API, follow these steps:
-
-    Clone the repository from GitHub.
-    Open a terminal and navigate to the root folder of the project.
-    Run the command npm run install.
-    After the installation is complete, run the command npm run dev to start the server.
-
-
